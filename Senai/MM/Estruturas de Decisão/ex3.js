@@ -5,7 +5,7 @@
 // Entra o número
 let numero = prompt("Digite um número: ");
 
-// divide por 2 e pega o resto
+// divide por 2 e pega o resto, o resto é o que sobra de uma divisão
 numero = numero % 2;
 
 // se for 0 é impar
