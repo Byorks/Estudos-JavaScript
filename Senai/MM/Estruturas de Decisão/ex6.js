@@ -8,7 +8,7 @@ alert("Para sair, digite: 0");
 //declarei uma variável bool como loop
 loop = true;
 
-// enquanto o loop for true, pergunte a idade.
+// enquanto o loop for true, pergunte a idade
 while (loop) {
     let idade = prompt("Insira a sua idade: ");
     
