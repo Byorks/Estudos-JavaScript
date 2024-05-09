@@ -45,3 +45,29 @@ console.log("Total pontos: " + totalPontos);
 
 let notaAluno = parseFloat(prompt("Digite a nota do aluno: "));
 console.log(notaAluno);
+
+
+/*
+
+// Fazendo conta com o JS
+// parseInt -> Transforma o que está entre () em número inteiro : 1, 2, 3 , 4 ....
+
+let nota1 = parseInt(prompt("Digite a nota aqui: "));
+
+let nota2 = parseInt(promtp("Digite a outra nota: "));
+
+// Entre parenteses para somar primeiro
+let media = (nota1 + nota2) / 2;
+
+console.log(media);
+
+*/
+
+// parseFloat -> Transforma o que está entre () em número com virgula / número fracionado 
+let produto1 = parseFloat(prompt("Digite o valor do produto: "));
+
+let produto2 = parseFloat(prompt("Digite o valor do segundo produto: "));
+
+let soma = produto1 + produto2;
+
+console.log(soma);
