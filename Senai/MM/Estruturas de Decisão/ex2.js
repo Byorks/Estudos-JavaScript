@@ -8,6 +8,10 @@
 
 let diaSemana = prompt("Digite um número entre 1 a 7: ");
 
+while (diaSemana > 7 || diaSemana < 1) {
+
+    diaSemana = prompt("Digite um número entre 1 a 7: ");
+}
 
 console.log("Entrada valida")
 
