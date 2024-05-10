@@ -10,17 +10,24 @@ loop = true;
 
 // enquanto o loop for true, pergunte a idade
 while (loop) {
-    let idade = prompt("Insira a sua idade: ");
+    let ano = parseInt(prompt("Insira o seu ano de nascimento: "));
     
-    // Verifica se é maior de 18 anos
-    if (idade >= 18) {
-        alert("Você é maior de idade.");
-    }
-    else if (idade == 0) {
+    if(ano == 0 ) {
         loop = false;
     }
     else {
-        alert("Você é menor de idade!");
+
+        // processa a idade;
+        anoVerificado =  2024 - ano;
+        // Verifica se é maior de 18 anos
+    
+        if (anoVerificado >= 18) {
+            alert("Você é maior de idade.");
+        }
+        else {
+            alert("Você é menor de idade!");
+        }
+        // Mostra na tela se é ou não
+
     }
-    // Mostra na tela se é ou não
 }
