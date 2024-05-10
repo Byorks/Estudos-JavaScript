@@ -17,7 +17,7 @@ media = (nota1 + nota2 + nota3 + nota4) / 4;
 if (media >= 7){
     alert("Sua média é "+ media +" Aprovado");
 }
-else if (media == 5 || media == 6) {
+else if (media >= 5 && media < 7) {
     alert("Sua média é "+ media +" Recuperação");
 }
 else{
