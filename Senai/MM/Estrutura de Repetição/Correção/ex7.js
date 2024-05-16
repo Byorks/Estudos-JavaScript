@@ -6,7 +6,7 @@ let soma = 0;
 
 while (numA <= 100) {
     // soma = soma + num;
-    soma += numA;
+    soma += num;
     num ++ 
 }
 
