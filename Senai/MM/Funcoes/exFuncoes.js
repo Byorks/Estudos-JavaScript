@@ -1,5 +1,8 @@
-// Criando a função, tem caracteristica hoisting
+// Criando a função, tem caracteristica 
+//Hoisting -> Usa funções(functions) e variaveis (var), antes da declaração
 // Primeiro declara e depois chama
+
+// Você "ensina" o computador a realiaro que está dentro da função
 function saudacao() {
     let nomePessoa = prompt("Digite seu nome: ");
     

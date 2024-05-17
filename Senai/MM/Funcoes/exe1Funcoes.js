@@ -1,4 +1,5 @@
-//Contruir um meno que é possível escolher um exercicios entre os exercicios anteriores, para ser executado. Faça com que o menu repita a sua execução,
+//Contruir um menu que é possível escolher um exercicios entre os exercicios anteriores, para ser executado. 
+// Faça com que o menu repita a sua execução,
 // disponibilize as opções para o usuário, até que seja digitado "sair";
 // 3 while e 3 for
 
