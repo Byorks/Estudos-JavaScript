@@ -186,17 +186,14 @@ function diaSemana() {
     // exibir o nome corresponde a esse dia
 }
 
-let menu = true; 
+// var criada fora é global
+let opcao = window.prompt("MENU\nDigite a opção desejada:\n\n 1 - Exercício Fibbonacci \n 2 - Exercício Soma dos númerosde 1 a 100\n 3 - Verificador de Idade \n 4 - Calculo de Indice de Massa Corporal \n 5 - Ordem dos Números \n 6 - Dia da Semana "); // .toLowerCase pode ser colocado aqui sem o new porque a classe string já foi istanciada 
 
-while( menu ) {
+while( resposta != "sair" ) {
+    // variáveis criadas dentro do while, só ficam acessíveis dentro do escopo 
     let opcao = window.prompt("MENU\nDigite a opção desejada:\n\n 1 - Exercício Fibbonacci \n 2 - Exercício Soma dos númerosde 1 a 100\n 3 - Verificador de Idade \n 4 - Calculo de Indice de Massa Corporal \n 5 - Ordem dos Números \n 6 - Dia da Semana "); // .toLowerCase pode ser colocado aqui sem o new porque a classe string já foi istanciada 
 
-    console.log("Esse é a opção: "+ opcao);
-
-    switch (opcao.toLowerCase()) {
-        case "sair":
-            menu = false;
-        break;
+    switch (opcao) {
         case "1": 
             fibbonacci();
         break;
@@ -224,6 +221,8 @@ while( menu ) {
             console.log("Número invalido");
         break;
     }
+    // limpa o console
+    console.clear();
 }
 
 
