@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom Exercicios</title>
+</head>
+<body>
+    <h1 id="Titulo01">Exercício 03</h1>
+    <h2>3 - Fechar a página, voltar, mostrar sua localização</h2>
+
+    </ul>
+    <button id="b-fechar" onclick="botaoFechar()">Fechar a oágina</button>
+    <button id="b-voltar" onclick="botaoVoltar()">Voltar</button>
+    <button id="b-local">Mostrar Localização</button>
+
+
+    <script>
+
+    const botaoFechar = () => {
+        window.close();
+    }
+
+    const botaoVoltar = () => {
+        history.go(-1)
+    }
+
+    </script>
+</body>
+</html>
