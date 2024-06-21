@@ -17,7 +17,7 @@ app.post('/solicitacoes', (req, res) => {
         headers: {
             "Accept": "application/json",
             "Content-Type": "application/json",
-            "Api-Key": "m"
+            "Api-Key": process.env.API_KEY
         },
         body: JSON.stringify(req.body)
     })
