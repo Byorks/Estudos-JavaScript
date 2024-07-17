@@ -9,7 +9,7 @@ const listaNumAleatoria = [];
 let listaAleatoriaString = "";
 for (let i = 0; i < 10; i++) {
     // Floor retorna o menor número inteiro entre os inteiro que recebe(arredonda)
-    listaNumAleatoria[i] = Math.floor(Math.random() * (31 - 0) + 0);
+    listaNumAleatoria[i] = Math.floor(Math.random() * (41 - 0) + 0);
     listaAleatoriaString += listaNumAleatoria[i].toString();
     listaAleatoriaString += " ";
 }
@@ -22,12 +22,12 @@ let pos = 0;
 do {
     menorNum = listaNumAleatoria[0];
     for (let a = 0; a < listaNumAleatoria.length; a++) {
-        if (menorNum > listaNumAleatoria[a]) {
+        // Revisar porquê da bugs ao deixar maior que >
+        if (menorNum >= listaNumAleatoria[a]) {
             menorNum = listaNumAleatoria[a];
             pos = listaNumAleatoria.indexOf(menorNum);
         }
     }
-    console.log(menorNum);
     listaOrganizada.push(menorNum);
     listaNumAleatoria.splice(pos, 1);
 } while (!(listaOrganizada.length == tamLista));
@@ -36,7 +36,6 @@ let listaOrganizadaSt = "";
 for (let b = 0; b < tamLista; b++) {
     listaOrganizadaSt += listaOrganizada[b].toString();
     listaOrganizadaSt += " ";
-    console.log(listaOrganizada[b]);
 }
 console.log("Lista Organizada\n" + listaOrganizadaSt);
 //# sourceMappingURL=script.js.map
