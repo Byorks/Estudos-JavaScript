@@ -1,8 +1,6 @@
 "use strict";
 // Este programa localiza quantas vezes a palavra escolhida aparece no texto
-// To Fix: 
-// Quando tem algum ponto : , . perto da palavra, ele reconhece tudo junto, então tenho que tirar os pontos, para verificar corretamente
-// Possível solução, fazer uma função, se tiver ponto, nós vamos retornar um bool, verdadeiro e ele não adiciona a palavra a concatenação
+// Arrow Method que procura identicar se há pontos na string inserida, retorna true caso encontre
 const VerificarPontos = (palavraMontada) => {
     let pontos = [",", ".", ":", ";", "!", "?", `"`, `'`];
     for (let p = 0; p < pontos.length; p++) {
@@ -11,21 +9,23 @@ const VerificarPontos = (palavraMontada) => {
         }
     }
 };
+// Variáveis
 let texto = prompt("Informe o texto.");
+while (texto == "") {
+    texto = prompt("Informe o texto");
+}
 let palavra = prompt("Insira a palavra que quer procurar no texto");
 let listaPalavras = [];
 let cont = 0;
-let temPonto = false;
 // Separar as palavras para poder verificar quais contem a {palavra}
 // Com método Split
 // let listaPalavras = texto?.split(" ")
 // Sem Split
-console.log(texto[1]);
 let montandoPalavra = "";
 let palavraRevisada = "";
-console.log(texto.length);
+// Com base no tamanho do texto, vamos passar letra por letra.
 for (let i = 0; i < texto.length; i++) {
-    // Precisa refatorar esse if
+    // Caso não seja um espaço, adicionarei a {montandoPalavra}
     if (texto[i] != " ") {
         // Se não for verdade que tem um ponto, então adiciona ele a montandoPalavra
         if (!(VerificarPontos(texto[i]))) {
@@ -34,6 +34,7 @@ for (let i = 0; i < texto.length; i++) {
         }
     }
     else {
+        // Caso seja um espaço, a palavra acabou, então vamos adicionar a uma lista, e contar +1 se a palavra corresponder a escolhida pelo usuário
         console.log("Palavra Montada: " + montandoPalavra);
         if (montandoPalavra.toLowerCase() == (palavra === null || palavra === void 0 ? void 0 : palavra.toLowerCase())) {
             cont++;
