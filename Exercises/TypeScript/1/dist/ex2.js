@@ -2,22 +2,36 @@
 // Este programa localiza quantas vezes a palavra escolhida aparece no texto
 // To Fix: 
 // Quando tem algum ponto : , . perto da palavra, ele reconhece tudo junto, então tenho que tirar os pontos, para verificar corretamente
+// Possível solução, fazer uma função, se tiver ponto, nós vamos retornar um bool, verdadeiro e ele não adiciona a palavra a concatenação
+const VerificarPontos = (palavraMontada) => {
+    let pontos = [",", ".", ":", ";", "!", "?", `"`, `'`];
+    for (let p = 0; p < pontos.length; p++) {
+        if (palavraMontada == pontos[p]) {
+            return true;
+        }
+    }
+};
 let texto = prompt("Informe o texto.");
 let palavra = prompt("Insira a palavra que quer procurar no texto");
 let listaPalavras = [];
 let cont = 0;
+let temPonto = false;
 // Separar as palavras para poder verificar quais contem a {palavra}
 // Com método Split
 // let listaPalavras = texto?.split(" ")
 // Sem Split
 console.log(texto[1]);
 let montandoPalavra = "";
+let palavraRevisada = "";
 console.log(texto.length);
 for (let i = 0; i < texto.length; i++) {
     // Precisa refatorar esse if
     if (texto[i] != " ") {
-        montandoPalavra += texto[i];
-        console.log("Montando Palavra: " + montandoPalavra);
+        // Se não for verdade que tem um ponto, então adiciona ele a montandoPalavra
+        if (!(VerificarPontos(texto[i]))) {
+            montandoPalavra += texto[i];
+            console.log("Montando Palavra: " + montandoPalavra);
+        }
     }
     else {
         console.log("Palavra Montada: " + montandoPalavra);
@@ -26,6 +40,7 @@ for (let i = 0; i < texto.length; i++) {
         }
         listaPalavras.push(montandoPalavra);
         montandoPalavra = "";
+        palavraRevisada = "";
     }
 }
 let contFE = 0;
