@@ -28,7 +28,7 @@ const app = express();
 routes(app);
 
 // Primeiro parâmetro é uma porta e a segunda é uma função
-// Aqui é como se falassemos ao servidor: fique atento, alguem vai chegar pedindo algo, mas só quem chegar pela porta 
+// Aqui é como se falassemos ao servidor: fique atento, alguem vai chegar pedindo algo, mas só quem chegar pela porta -
 // 3000 pode ter acesso.
 // Normalmente em servidor local utilizamos a porta 3000
 app.listen(3000, () => {

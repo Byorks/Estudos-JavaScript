@@ -1,6 +1,7 @@
 // aqui vai ficar toda responsabilidade de lidar com requisições 
 
-import getTodosPosts from "../models/postsModel.js";
+import {getTodosPosts, criarPost} from "../models/postsModel.js";
+import fs from "fs";
 
 export async function listarPosts(req, res) {
     const posts = await getTodosPosts();
@@ -10,4 +11,40 @@ export async function listarPosts(req, res) {
     // vamos transformar essa lista de objetos em json
     res.status(200).json(posts);
 
+}
+
+export async function postarNovoPost(req, res) {
+    // Os dados ficam no corpo, informações ficam no header(cabeçalho)
+    const novoPost = req.body;
+    try {
+        const postCriado = await criarPost(novoPost);
+        res.status(200).json(postCriado);
+    }
+    catch(erro) {  
+        // Bom ter cautela com questão de não enviar muitos detalhes na mensagem de erro, no console, só nos veremos o erro.
+        // Se devolvermos uma mensagem com muitos detalhes, é possível que alguem possa tentar tirar proveito.
+        console.error(erro.message);
+        res.status(500).json({"Erro":"Falha na requisição"});
+    }
+}
+
+export async function uploadImagem(req, res) {
+    console.log(req);
+    const novoPost = {
+        descricao: "",
+        imgUrl: req.file.originalname,
+        alt: ""
+    };
+
+    try {
+        const postCriado = await criarPost(novoPost);
+        const imagemAtualizada = `uploads/${postCriado.insertedId}.png`;
+        // Primeiro parâmetro é o nome e o segundo é o caminho
+        fs.renameSync(req.file.path, imagemAtualizada);
+        res.status(200).json(postCriado);
+    }
+    catch(erro) {  
+        console.error(erro.message);
+        res.status(500).json({"Erro":"Falha na requisição"});
+    }
 }
