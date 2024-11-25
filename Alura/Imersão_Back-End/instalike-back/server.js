@@ -1,6 +1,8 @@
 // Importando o express
 import express from 'express';
+import routes from './src/routes/postRoutes.js';
 // Uso de ;(ponto e virgula) é uma boa prática usar, pois se não colocarmos estamos deixando o Node decidir
+
 
 // Criando lista de objetos
 const posts = [
@@ -23,9 +25,7 @@ const posts = [
 
 // Executando uma função express, e colocamos tudo que é necessário para manusear agora está em 'app'
 const app = express(); 
-
-// Express vai devolver json
-app.use(express.json());
+routes(app);
 
 // Primeiro parâmetro é uma porta e a segunda é uma função
 // Aqui é como se falassemos ao servidor: fique atento, alguem vai chegar pedindo algo, mas só quem chegar pela porta 
@@ -35,15 +35,6 @@ app.listen(3000, () => {
     console.log("Servidor escutando...");
 });
 
-// Criando a primeira rota - posts, boa prática porque vamos trabalhar com posts
-// Definindo a rota para o cliente pegar a resposta - enfase no pegar - get.
-app.get("/posts", (req, res) => {
-    // Definindo a resposta - http 200 que significa => OK
-    // Estamos colocando posts -> uma lista, mas graças a funcioalidade de transformar em json do express
-    // vamos transformar essa lista de objetos em json
-    res.status(200).json(posts);
-   
-});
 
 function buscarPostPorIdVanessa(id) {
     // Minha resolução
@@ -77,8 +68,9 @@ function buscarPostPorId(id) {
     })
 }
 
-// Meu método
+
 app.get("/posts/:id", (req, res) => {
+    // Minha forma
     // let postEncotrado = buscarPostPorId(req.params);
     // console.log(postEncotrado);
 
