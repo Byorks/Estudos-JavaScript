@@ -25,6 +25,9 @@ const posts = [
 
 // Executando uma função express, e colocamos tudo que é necessário para manusear agora está em 'app'
 const app = express(); 
+
+// Abrindo para visualização externa, nomeamos esse ato como -> Servir arquivos estáticos
+app.use(express.static("uploads"))
 routes(app);
 
 // Primeiro parâmetro é uma porta e a segunda é uma função
