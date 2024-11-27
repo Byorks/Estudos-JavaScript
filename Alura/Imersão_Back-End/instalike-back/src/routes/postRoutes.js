@@ -1,6 +1,12 @@
 import express from "express";
 import multer from "multer";
+import cors from "cors";
 import { listarPosts, postarNovoPost, uploadImagem, atualizarNovoPost} from "../controllers/postsController.js";
+
+const corsOptions = {
+    origin: "http://localhost:8000",
+    optionsSuccessStatus: 200
+}
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
@@ -18,6 +24,7 @@ const upload = multer({ dest: "./uploads" , storage});
 const routes = (app) => {
     // Express vai devolver json
     app.use(express.json());
+    app.use(cors(corsOptions));
 
     // Criando a primeira rota - posts, boa prática porque vamos trabalhar com posts
     // Definindo a rota para o cliente pegar a resposta - enfase no pegar - get.
