@@ -1,3 +1,5 @@
+// Garantindo que o Google Cloud vai entender nossas variáveis de ambiente  
+import 'dotenv/config';
 import { ObjectId } from "mongodb";
 import conectarAoBanco from "../config/dbconfig.js";
 

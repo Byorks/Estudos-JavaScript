@@ -1,7 +1,7 @@
 // Importando o express
 import express from 'express';
 import routes from './src/routes/postRoutes.js';
-// Uso de ;(ponto e virgula) é uma boa prática usar, pois se não colocarmos estamos deixando o Node decidir
+// Uso de ;(ponto e virgula) é uma boa prática, pois se não colocarmos estamos deixando o Node decidir
 
 
 // Criando lista de objetos
@@ -27,6 +27,7 @@ const posts = [
 const app = express(); 
 
 // Abrindo para visualização externa, nomeamos esse ato como -> Servir arquivos estáticos
+// Permite a possibilidade de acessar os arquivos da pasta uploads diretamente por seus nomes.extensão, não sendo necessário criar uma rota para cada arquivo
 app.use(express.static("uploads"))
 routes(app);
 
