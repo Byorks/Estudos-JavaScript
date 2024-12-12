@@ -1,11 +1,12 @@
 import express from "express";
-import routes from "./src/routes/usersRoutes.js"
+import usersRoutes from "./src/routes/projectsRoutes.js"
+import projectRoutes from "./src/routes/projectsRoutes.js";
 
 const app = express();
 
+usersRoutes(app);
 
-
-routes(app);
+projectRoutes(app);
 
 app.listen(3000, () => {
     console.log("Servidor escutando...");

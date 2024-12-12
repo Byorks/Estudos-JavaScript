@@ -69,11 +69,8 @@ export async function createUser(newUser) {
     const db = conection.db("fotografia-portfolio");
     const collection = db.collection("users");
 
-
     console.log(newUser);
     console.log(JSON.stringify(newUser));
-
-
 
     return collection.insertOne(newUser);
 }

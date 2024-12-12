@@ -8,7 +8,7 @@ export async function listUsers(req, res) {
 };
 
 export async function createNewUser(req, res) {
-    console.log("Criando um user")
+    console.log("Criando um user");
     const newUser = req.body;
     try {
         const createdUser = await createUser(newUser);

@@ -1,4 +1,4 @@
-    // Esse mét
+    // Esse método pega a hora atual
     
 export default async function getTimeNow() {
     const dataAtual = new Date();
@@ -12,5 +12,5 @@ export default async function getTimeNow() {
     const dataFormatada = `${dia}/${mes}/${ano} ${horas}:${minutos}`;
     console.log(dataAtual);
     console.log(dataFormatada);
-
+    return dataFormatada;
 }
