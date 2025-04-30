@@ -10,7 +10,9 @@ export default async function getTimeNow() {
     const minutos = String(dataAtual.getUTCMinutes()).padStart(2, '0');
 
     const dataFormatada = `${dia}/${mes}/${ano} ${horas}:${minutos}`;
-    console.log(dataAtual);
-    console.log(dataFormatada);
-    return dataFormatada;
+    // console.log(dataAtual);
+    // console.log(dataFormatada);
+
+    const dataPostagem = { data_postagem: dataFormatada};
+    return dataPostagem;
 }
