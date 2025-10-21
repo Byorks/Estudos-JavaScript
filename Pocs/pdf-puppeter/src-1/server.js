@@ -1,5 +1,5 @@
 // Criando servidor
-import express, { response } from "express";
+import express from "express";
 import ejs from "ejs";
 import path, { format } from "path";
 import { fileURLToPath } from "url";
@@ -11,9 +11,8 @@ const app = express();
 // Deixando o browser aberto até que o servidor seja encerrado
 let browser;
 
-// Caso o headless esteja como true, ele vai abrir o navegador de forma oculta
-(async () => {
-  browser = await puppeteer.launch({ headless: false });
+(async ()=> {
+  browser =  await puppeteer.launch();
 })();
 
 // import.meta.url -> Importa o caminho da URL atual
@@ -49,20 +48,27 @@ app.get("/", async (request, response) => {
   ejs.renderFile(filePath, { passengers }, async (err, html) => {
     if (err) return response.send("Erro na leitura do arquivo");
 
+    // Configurando o pdf
+    const options = {
+      height: "11.25in",
+      width: "8.5in",
+      header: {
+        height: "20mm",
+      },
+      footer: {
+        height: "20mm",
+      },
+    };
+
+    // Exportando pdf com puppeteer
+    const page = await browser.newPage();
+    await page.setContent(html);
+    await page.pdf({ path: "report.pdf", format: "A4" });
+
+    await browser.close();
+    
     return response.send(html);
     return response.send("Gerou o pdf, eu espero!");
-
-    // Configurando o pdf para html-pdf
-    // const options = {
-    //   height: "11.25in",
-    //   width: "8.5in",
-    //   header: {
-    //     height: "20mm",
-    //   },
-    //   footer: {
-    //     height: "20mm",
-    //   },
-    // };
     // criar pdf
     // pdf.create(html, options).toFile("report.pdf", (err, data) => {
     //   if (err) return response.send("Erro ao gerar o PDF");
@@ -73,41 +79,10 @@ app.get("/", async (request, response) => {
   });
 });
 
-app.get("/request-pdf", async (req, res) => {
-  const filePath = path.join(__dirname, "print.ejs");
-  ejs.renderFile(filePath, { passengers }, async (err, html) => {
-    if (err) return response.send("erro na leitura do arquivo :(");
-
-    // Exportando pdf com puppeteer
-    const page = await browser.newPage();
-    // await page.goto('https://google.com', {
-    //   waitUntil: 'networkidle0'
-    // })
-
-    // Acessa a página que vai ser transformada em pdf
-    await page.goto("http://localhost:3000", {
-      waitUntil: "networkidle0",
-    });
-
-    // Colocando diretamente o conteúdo do ejs dentro da page, o layout
-    // await page.setContent(html);
-    
-    // Configurando pdf
-    await page.pdf({
-      path: "report.pdf",
-      printBackground: true,
-      format: "A4",
-      margin: { top: "20px", bottom: "40px", left: "20px", right: "20px" },
-    });
-
-    response.contentType("application/pdf")
-    return response.send(pdf);
-  });
-});
-
 // Primeiro entendimento de callback
 // Se trata de uma função que entra como argumento de outra função
 // Sera executada em um tempo determinado, quero dizer que vai ser determinado ao criar a função
+
 
 // Quando o servidor for encerrado fecha o navegador
 process.on("exit", async () => {

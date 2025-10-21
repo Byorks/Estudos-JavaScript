@@ -14,5 +14,7 @@
 * [x] Utilizar o html-pdf e configurar as opções
 * [x] Callback de novo?
 * [x] Gerar o arquivo
-* [ ] O html-pdf foi descontinuado, alterar para Puppeteer
-* [ ] 
+* [x] O html-pdf foi descontinuado, alterar para Puppeteer
+* [x] Criada rotas com puppeteer
+
+"Dúvidas precisam virar pesquisas"
