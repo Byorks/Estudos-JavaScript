@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        table {
+            width: 100%;
+        }
+        th {
+            text-align: left;
+        }
+    </style>
+</head>
+<body class="bg-purple-100 w-screnn">
+    <div class="grid col-3 px-6 rounded-lg">
+        <h1 class="text-3xl pb-5">Listagem de passageiros</h1>
+        <table class="border border-gray-400 bg-sky-950">
+            <thead>
+                <tr>
+                    <th class="border border-gray-300 text-slate-100 p-3">Nome</th>
+                    <th class="border border-gray-300 text-slate-100 p-3">Número de voo</th>
+                    <th class="border border-gray-300 text-slate-100 p-3">Horário</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (passengers.length > 0) { %>
+                    <% passengers.forEach (passenger => {
+                        %>
+                        <tr>
+                            <td class="border border-gray-300 text-slate-300 p-3"><%= passenger.name %></td>
+                            <td class="border border-gray-300 text-slate-300 p-3"><%= passenger.flightNumber %></td>
+                            <td class="border border-gray-300 text-slate-300 p-3"><%= passenger.time %></td>
+                        </tr>
+                   <% }) %>
+                <% } %>
+            </tbody>
+            <tfoot>
+                <tr><td class="text-slate-300 p-3" colspan="2"><%=passengers.length%> passageiros</td></tr>
+            </tfoot>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+.capa, .fim {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* ocupa a página inteira */
+  page-break-after: always; /* força quebra de página após a capa */
+}
+
+main {
+  padding: 2cm;
+}
